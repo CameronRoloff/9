@@ -1,0 +1,120 @@
+Chapter 14
+14.1
+Picture
+14.2
+Picture
+14.3
+Yes as it can take in all parameters and I can understand what they're getting at, meaning it should be easy to understand for other programmers.
+14.4
+I wouldn't say it would be justiced, as it imports more than what it actually needs. Which in return causes more memory to be wasted.  If we were to use Treemap it will output in sorted order as it stores values in the form of a tree with the use of SortedMap. Where in the Hashmap it doesn't sort.
+14.5
+Picture
+14.6
+COME BACK TO
+14.7
+Should be sort of simple, maybe. To do this we would need two methods, an addDetails method and a removeDetails method.
+14.8
+It will return an error as there is no key to remove from the list of contact details.
+14.9
+In cases in which runtime could be lost, like letting a program crash when it tries getting data from an existing file.
+14.10
+In sometimes cases no its unavoidable. As  some conditions can only happen in special cases.
+14.11
+
+14.12
+Yes it would, you could modify the removeDetails method to complete this.
+
+14.13
+
+14.14
+The method keyInUse only returns true or falses, so it shouldn't be possibly to get any errors to occur, and it isn't invoked anywhere in the class AddressBook.
+
+14.15
+I think that the person should know that they're giving bad parameters, or else they won't stop. I wouldn't report it the the terminal though, perhaps a alert window of some sorts?
+
+No because they are textural projects so reporting errors to the terminal makes sense.
+14.20
+
+14.21
+No because the purpose of a error notification is there if the method search does not find any matches in a particular list. Matches are made on prefix of a key and not a actually key. 
+
+14.22
+It accepts name, phone, and address (name and phone are the key elements that the map uses in the AddressBook class) So putting the address with them would be inappropriate. The reason this would be is if two people with the same name and address could be present at the same location, but their cell phone numbers would defetinly be different.
+
+14.23
+
+The constructor by rights will throw a exception which notifys the client for missing parameters values
+
+14.24
+
+1  IOException
+2. EOFException
+3.FileNotFoundException
+
+14.25
+Uncheck
+Checked
+
+It will run and complie if it does not  fao; wotjom tje omstamce details, if it does it will throw a error which could possibly stop the execution of the program.
+
+14.33
+
+We are unable to define the catch block as it exception type is a super type of itself.
+
+14.35
+
+I would say that it should be checked, anything being added to a list should be verfied that it's done correctly. As in this instance it takes keys of names and cell phone numbers before adding it to a contact list. This would allow for existing entries to be saved, else they would be lost.
+
+14.41
+In the Flie class you can find that it checks if a file or directory is avabile on the disk or not. Methods are exist(),delete(),isFile(),getAbsolutePath(),isDirectory().
+
+14.42
+To check for path use the isFile method
+While to check for directory use the isDirectory method
+
+14.43
+Its two seperate things to create a file within the file object, and to create a file in the file system. So no.
+
+
+14.44
+
+List Of Scanner Methods
+Scanner Class
+delimiter()
+findInLine(Pattern pattern)
+findInLine(String pattern)
+findWithinHorizon()
+hasNextBoolean()
+hasNextByte()
+hasNextInt()
+hasNextLine()
+hasNextLong()
+hasNext()
+hasNextShort()
+hasNext(Pattern pattern)
+hasNext(String pattern)
+locale()
+match()
+nextBoolean()
+nextInt()
+nextShort()
+nextLine()
+next()
+nextByte()
+next(Pattern pattern)
+next(String pattern)
+radix()
+skip()
+useDelimiter(String pattern)
+useRadix(int radix)
+useDelimiter(Pattern pattern)
+useLocale(Locale)
+
+14.53
+at least from playing around with it no kind of errors seem to occur. 
+
+14.55
+
+address-book-v1g
+ContactDetails
+I would say its fair, its more than one in a list, and the information is pluar.

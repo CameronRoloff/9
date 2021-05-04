@@ -1,0 +1,114 @@
+package com.example.myapplication;
+
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.text.method.ScrollingMovementMethod;
+import android.util.DisplayMetrics;
+import android.view.Display;
+import android.view.ViewGroup;
+import android.view.WindowMetrics;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.ScrollView;
+import android.widget.TableLayout;
+import android.widget.TableRow;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+public class
+EndingScreen extends AppCompatActivity {
+
+    TextView playerOneDisplay ;
+    TextView playerTwoDisplay ;
+    TextView winnerDisplay ;
+    Button again ;
+    LinearLayout scores ;
+    TableLayout table;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_ending_screen);
+        initialize();
+        SharedPreferences settings = getApplicationContext().getSharedPreferences("pigs", 0);
+        SharedPreferences.Editor editor = settings.edit();
+
+        MainActivity mainActivity = MainActivity.INSTANCE;
+        String winText = mainActivity.getCurrentPlayerText() + " Won";
+
+        //sets the visual scores for both players and tells who won
+        winnerDisplay.setText(winText);
+        playerOneDisplay.setText(String.valueOf(mainActivity.getScorePlayerOne()));
+        playerTwoDisplay.setText(String.valueOf(mainActivity.getScorePlayerTwo()));
+
+
+        //Creates two ArrayList to store the scores from both players
+        TextView scores = findViewById(R.id.playerScores);
+        StringBuilder sb = new StringBuilder();
+        List<Integer> scoresPlayerOne = new ArrayList<>();
+        List<Integer> scoresPlayerTwo = new ArrayList<>();
+
+        int playerOneScore = settings.getInt("0A",-1);
+        int playerTwoScore;
+        int index = 0;
+
+        scores.setMovementMethod(new ScrollingMovementMethod());
+
+        sb.append("Player One - Player Two");
+        sb.append("\n");
+        sb.append("―――――――――――――");
+        sb.append("\n");
+
+        while(playerOneScore != -1){
+            playerTwoScore = settings.getInt(index + "B", -1);
+            scoresPlayerOne.add(playerOneScore);
+            scoresPlayerTwo.add(playerTwoScore);
+            index++;
+            playerOneScore = settings.getInt(index + "A", -1);
+        }
+        scoresPlayerOne.add(mainActivity.getScorePlayerOne());
+        scoresPlayerTwo.add(mainActivity.getScorePlayerTwo());
+        Collections.reverse(scoresPlayerOne);
+        Collections.reverse(scoresPlayerTwo);
+        index = 0;
+
+        for(int p1Score : scoresPlayerOne) {
+            sb.append(p1Score);
+            sb.append(" - ");
+            sb.append(scoresPlayerTwo.get(index));
+            sb.append("\n");
+            sb.append("―――――――――――――");
+            sb.append("\n");
+            index++;
+        }
+
+        scores.setText(sb.toString());
+        editor.putInt((index - 1) + "A", mainActivity.getScorePlayerOne());
+        editor.putInt((index - 1) + "B", mainActivity.getScorePlayerTwo());
+        editor.apply();
+
+        //Switches activitys to Main
+        again.setOnClickListener((view) ->{
+            mainActivity.resetVaribles();
+            startActivity(new Intent(view.getContext(), MainActivity.class));
+        });
+
+    }
+    private void initialize(){
+         playerOneDisplay = findViewById(R.id.playerOneAmount);
+         playerTwoDisplay = findViewById(R.id.playerTwoAmount);
+         winnerDisplay = findViewById(R.id.winnerDisplay);
+         again = findViewById(R.id.playAgain);
+
+    }
+
+}
+
